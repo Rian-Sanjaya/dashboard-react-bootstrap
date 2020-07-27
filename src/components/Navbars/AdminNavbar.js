@@ -74,7 +74,16 @@ class AdminNavbar extends React.Component {
   }
 
   componentDidUpdate(e) {
-    console.log("window innerWidth: ", window.innerWidth)
+    // console.log(e)
+    if (
+      window.innerWidth < 993 && 
+      e.history.location.pathname !== e.location.pathname && 
+      document.documentElement.className.indexOf('nav-open') !== -1
+    ) {
+      // console.log('toggled toggled')
+      document.documentElement.classList.toggle('nav-open')
+      this.sidebarToggle.current.classList.toggle('toggled')
+    }
   }
 
   render() {

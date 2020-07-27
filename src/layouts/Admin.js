@@ -7,6 +7,7 @@ import PerfectScrollbar from "perfect-scrollbar";
 import routes from '../routes'
 import AdminNavbar from '../components/Navbars/AdminNavbar'
 import Sidebar from '../components/Sidebar/Sidebar'
+import Footer from '../components/Footer/Footer'
 
 var ps
 
@@ -121,6 +122,11 @@ class Admin extends Component {
             {this.getRoutes(routes)}
             <Redirect from="/admin" to="/admin/dashboard" />
           </Switch>
+          {// we don't want the Footer to be rendered on full screen maps page
+            window.location.href.indexOf('full-screen-maps') !== -1 ? null : (
+              <Footer fluid />
+            )
+          }
         </div>
       </div>
     )
